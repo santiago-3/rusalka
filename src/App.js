@@ -1,24 +1,27 @@
-import logo from './logo.svg';
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Layout from "./Layout.js";
+import Menu from "./Menu.js";
+import EngToRus from "./engToRus.js";
+import RusToEng from "./rusToEng.js";
+import SEngToRus from "./sEngToRus.js";
+import SRusToEng from "./sRusToEng.js";
+import UserSettings from "./userSettings.js";
 import './App.css';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+      <BrowserRouter>
+          <Routes>
+              <Route path="/" element={<Layout />}>
+                  <Route index element={<Menu />} />
+                  <Route path="write-english-to-russian" element={<EngToRus />} />
+                  <Route path="write-russian-to-english" element={<RusToEng />} />
+                  <Route path="select-english-to-russian" element={<SEngToRus />} />
+                  <Route path="select-russian-to-english" element={<SRusToEng />} />
+                  <Route path="user-settings" element={<UserSettings />} />
+              </Route>
+          </Routes>
+      </BrowserRouter>
   );
 }
 
