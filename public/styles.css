@@ -1,0 +1,236 @@
+@font-face {
+  font-family: "austin";
+  src: url("/fonts/Austin.ttf");
+}
+body {
+    display:flex;
+    justify-content: center;
+    background-color: #fcd;
+    width: 100%;
+    font-size: 22px;
+    color: #928;
+}
+div, nav, input, button {
+    box-sizing: border-box;
+}
+a:active{
+    color: inherit;
+}
+input, button {
+    outline: none;
+    width: 400px;
+    padding: 10px;
+    border: none;
+    color: #655;
+}
+button {
+    cursor: pointer;
+}
+.vertical-flex {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+.flex-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.flex-between {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+#root {
+    min-height: 100vh;
+    width: 1000px;
+    display: flex;
+    flex-direction: column;
+}
+.expand {
+    width: 100%;
+    height: 100%;
+}
+
+nav {
+    padding: 20px;
+    width: 100%;
+}
+
+nav .back{ background-image: url("/images/backArrow.png"); }
+nav .settings{ background-image: url("/images/settings.png"); }
+nav .user{ background-image: url("/images/user.png"); }
+
+nav .back:hover{ background-image: url("/images/backArrow-selected.png"); }
+nav .settings:hover{ background-image: url("/images/settings-selected.png"); }
+nav .user:hover{ background-image: url("/images/user-selected.png"); }
+
+nav div{
+    width: 48px;
+    height: 48px;
+    background-size: 48px;
+    cursor: pointer;
+}
+.login-form input, .login-form button {
+}
+
+.menu {
+    width: 100%;
+    min-height: 100vh;
+}
+
+.menu ul li {
+    list-style: none;
+    width: 400px;
+    padding: 10px;
+    text-align: center;
+    background-color: #fff;
+    cursor: pointer;
+}
+.menu ul li:hover {
+    background-color: #fee;
+}
+.menu ul a{
+    text-decoration: none;
+}
+.stats {
+    width: 400px;
+    font-family: austin;
+}
+.stats > div{
+    text-align: center;
+}    
+.program > .word {
+    font-size: 56px;
+    font-family: austin;
+}
+.suggestions-list-container{
+    position: relative;
+    width: 400px;
+}
+.suggestions-list{
+    position: absolute;
+    background-color: #fcd;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    z-index: 1;
+    padding: 1px 1px 0px 1px;
+    max-height: 200px;
+    overflow-y: auto;
+}
+.suggestion{
+    background-color: #fbd;
+    width: 100%;
+    text-align: center;
+    padding: 5px;
+    color: #333;
+    margin-bottom: 1px;
+    cursor: pointer;
+}
+.suggestion.highlighted{
+    background-color: #fff;
+    width: 100%;
+    color: #655;
+}
+.program {
+    border-radius: 15px;
+    background-color: #fbd;
+    min-width: 800px;
+    align-items: center;
+    justify-content: space-between;
+    padding: 30px 40px 40px 40px;
+}
+.program input {
+    font-size: 32px;
+}
+.program button {
+    font-size: 32px;
+    color: #fde;
+    background-color: #a3a;
+}
+.content {
+    height: 400px;
+}
+.content .right {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+    padding: 20px;
+}
+.content .right > div:first-child{
+    flex-grow: 1;
+}
+.option {
+    cursor: pointer;
+}
+.option:hover {
+    background-color: #fff;
+}
+.selector {
+    width: 400px;
+    height: 400px;
+    /*overflow-y: scroll;*/
+}
+.selector .option {
+    height: 36px;
+    position: relative;
+    background-color: #fcd;
+    padding: 3px 8px;
+    border-radius: 4px;
+}
+.selector .option:hover {
+    background-color: #fff;
+}
+.selector .option .display {
+    height: 32px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+.selector .option .tooltip {
+    background-color: #555;
+    color: #fff;
+    padding: 8px;
+    border-radius: 8px;
+    position: absolute;
+    display: none;
+    top: 40px;
+    width: 280px;
+    z-index: 20;
+}
+.selector .option:hover .tooltip {
+    display: block;
+}
+.previous-word {
+    width: 400px;
+    background-color: #555;
+    color: #fcd;
+    border-radius: 16px;
+}
+.previous-word .definition {
+    height: 72px;
+    border-bottom: 2px solid #fff;
+}
+.previous-word .word {
+    width: 300px;
+    height: 36px;
+    border-right: 2px solid #fff;
+    padding: 4px;
+}
+.previous-word .state {
+    flex-grow: 1;
+    height: 36px;
+    color: #fff;
+    border-bottom-right-radius: 16px;
+}
+.previous-word .state.wrong { background-color: #f55; }
+.previous-word .state.twotries { background-color: #f59; }
+.previous-word .state.ok { background-color: #0c0; }
+.option.bad {
+    text-decoration-line: line-through;
+    text-decoration-thickness: 2px;
+}
