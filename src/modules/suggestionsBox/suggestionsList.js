@@ -24,9 +24,10 @@ const SuggestionsList = (props) => {
     }
     else if (list.length > 0 && !hideSuggestions){
         let displayList = null
-        displayList = list.slice(0,displayMax).map( suggestion => {
+        displayList = list.slice(0,displayMax).map( (suggestion, index) => {
             return(
                 <Suggestion 
+                    key={index}
                     highlighted={highlighted}
                     headActions={headActions}
                     {...suggestion}

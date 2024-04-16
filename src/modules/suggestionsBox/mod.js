@@ -45,11 +45,13 @@ const SuggestionsBox = (props) => {
             case 40 : nextHighlighted++; break;
         }
 
+        const displayedSuggestions = Math.min(suggestions.length, DISPLAY_MAX)
+
         if (nextHighlighted < 0){
-            nextHighlighted += DISPLAY_MAX
+            nextHighlighted += displayedSuggestions
         }
-        else if (nextHighlighted >= DISPLAY_MAX){
-            nextHighlighted -= DISPLAY_MAX
+        else if (nextHighlighted >= displayedSuggestions){
+            nextHighlighted -= displayedSuggestions
         }
         setHighlighted(nextHighlighted)
     }

@@ -56,6 +56,7 @@ const RusToEng = ({setProgram}) => {
     }
 
     useEffect( () => {
+        console.log('selected: ', selected)
         const handleClick = () => {
             setChosen(selected)
             setAttempts(previousAttempts => previousAttempts + 1)
@@ -63,7 +64,6 @@ const RusToEng = ({setProgram}) => {
         if (selected !== 0) {
             handleClick()
         }
-
     }, [selected])
 
     const sendWordResult = wrongs => {
@@ -117,7 +117,6 @@ const RusToEng = ({setProgram}) => {
     useEffect( () => {
         if (attempts > 0){
             let wrongs = attempts
-            console.log(words[currentWordI])
             if( chosen == words[currentWordI].id ){
                 wrongs--
             }
@@ -128,8 +127,14 @@ const RusToEng = ({setProgram}) => {
                 updateStats()
                 setAttempts(0)
                 setPreviousWord(words[currentWordI])
-                setPreviousState(attempts == 2 ? states.PANIC : states.HAPPINES)
                 setCurrentWordI(previousWordI => previousWordI+1)
+                setPreviousState(
+                    attempts == 2
+                        ?  wrongs == 1
+                            ? states.CRITICAL
+                            : states.PANIC
+                        : states.HAPPINES
+                )
             }
         }
     }, [attempts])

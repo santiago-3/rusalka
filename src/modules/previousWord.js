@@ -21,11 +21,7 @@ const PreviousWord = ({app,word,option,state}) => {
     }
     return (
         <div className="previous-word">
-            <div className="definition flex-center">{definition.join(' - ')}</div>
-            <div className="flex-between">
-                <div className="word flex-center">{russianWord}</div>
-                <div className={['state', 'flex-center', stateClass].join(' ')}>{state}</div>
-            </div>
+            <div className={['state', stateClass].join(' ')}>{russianWord}</div> {definition.join(' / ')}
         </div>
     )
 }

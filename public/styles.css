@@ -206,26 +206,18 @@ nav div{
     display: block;
 }
 .previous-word {
-    width: 400px;
-    background-color: #555;
-    color: #fcd;
     border-radius: 16px;
-}
-.previous-word .definition {
-    height: 72px;
-    border-bottom: 2px solid #fff;
-}
-.previous-word .word {
-    width: 300px;
-    height: 36px;
-    border-right: 2px solid #fff;
-    padding: 4px;
+    border: 1px solid #666;
+    line-height: 28px;
+    width: 350px;
 }
 .previous-word .state {
-    flex-grow: 1;
-    height: 36px;
-    color: #fff;
-    border-bottom-right-radius: 16px;
+    float: left;
+    color: #333;
+    border-radius: 3px;
+    margin-right: 5px;
+    padding: 3px;
+    line-height: 20px;
 }
 .previous-word .state.wrong { background-color: #f55; }
 .previous-word .state.twotries { background-color: #f59; }
