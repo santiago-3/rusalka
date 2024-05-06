@@ -13,7 +13,6 @@ function App() {
       <BrowserRouter>
           <Routes>
               <Route path="/" element={<Layout />}>
-                  <Route index element={<Menu />} />
                   <Route path="write-english-to-russian" element={<EngToRus />} />
                   <Route path="write-russian-to-english" element={<RusToEng />} />
                   <Route path="select-english-to-russian" element={<SEngToRus />} />

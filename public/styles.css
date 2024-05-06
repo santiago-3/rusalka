@@ -2,227 +2,181 @@
   font-family: "austin";
   src: url("/fonts/Austin.ttf");
 }
+.gray-1 { color: #909090 }
+.gray-2 { color: #707070 }
+.gray-3 { color: #303030 }
 body {
-    display:flex;
-    justify-content: center;
-    background-color: #fcd;
-    width: 100%;
-    font-size: 22px;
-    color: #928;
+    margin: 0px;
+    background-color: #b0b0b0;
+    color: #303030;
+    display: inline-block;
 }
-div, nav, input, button {
-    box-sizing: border-box;
+div {
+    box-sizing: content-box;
 }
-a:active{
-    color: inherit;
+ul {
+    list-style: none;
+    margin: 0px;
+    padding: 0px;
 }
-input, button {
+header .title {
+    padding: 10px 100px;
+    font-size: 85px;
+    text-align: center;
+}
+main {
+    display: flex;
+    font-family: austin;
+}
+input {
     outline: none;
-    width: 400px;
-    padding: 10px;
+    background-color: #ddd;
     border: none;
-    color: #655;
+    color: #333;
+    text-align: center;
 }
-button {
+}
+input:focus {
+    background-color: #fff;
+}
+.column-left {
+    padding: 16px;
+    background: linear-gradient(#b0b0b0 10%, #a0a0a0 60%, #b0b0b0);
+}
+.column-left ul a {
+    text-decoration: none;
+    color: #111;
+}
+.column-left ul li {
+    font-size: 20px;
+    color: #111;
     cursor: pointer;
+    padding-left: 6px;
 }
-.vertical-flex {
+.column-left ul li:hover {
+    color: #000;
+    padding-left: 3px;
+    border-left: 3px solid #555;
+}
+.content {
+    padding: 10px 40px;
+}
+.content > .word {
+    font-size: 34px;
+    width: 780px;
+    margin-bottom: 10px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    text-align: center;
+}
+.content .stats {
+    display: flex;
+    justify-content: space-between;
+    text-align: center;
+    padding: 12px 28px;
+    background-color: #a0a0a8;
+    margin-bottom: 16px;
+    border-radius: 12px;
+}
+.content .stats > div {
+    line-height: 14px;
+}
+.action {
+    display: flex;
+    gap: 24px;
+}
+
+.action > div:first-child {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    width: 350px;
+    padding: 10px;
+}
+.action .selector {
+    padding: 10px;
+}
+.action .selector, .action .selector input {
+    width: 100%;
+}
+.action .selector input {
+    background-color: #d0d0d8;
+    border-radius: 4px;
+    font-size: 34px;
+    padding: 8px;
+    line-height: 42px;
+}
+.action .feedback {
+    font-size: 20px;
+    color: #603030;
+    flex-grow: 1;
+    display: flex;
+    align-items: center;
+}
+.action .feedback.empty {
+    color: #606060;
+}
+.action .previous {
+    text-align: center;
+    height: 200px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 14px;
+    align-items: center;
+    border: 1px solid #888;
+    width: 100%;
+    margin-bottom: 34px;
+    border-radius: 8px;
+    box-shadow: 2px 2px #666;
+}
+.action .previous.good { background-color: #b0b8b0; }
+.action .previous.fine { background-color: #b8b4b0; }
+.action .previous.bad { background-color: #b8b0b0; }
+.action .previous .word {
+    font-size: 28px;
+    line-height: 34px;
+    max-width: 280px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+
+}
+.action .previous .answer {
+    font-size: 24px;
+}
+
+.action .go {
+    padding: 24px;
+    border-radius: 8px;
+    box-shadow: inset 2px 2px 5px #888;
     display: flex;
     flex-direction: column;
     gap: 5px;
-}
-.flex-center {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.flex-between {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-#root {
-    min-height: 100vh;
-    width: 1000px;
-    display: flex;
-    flex-direction: column;
-}
-.expand {
-    width: 100%;
-    height: 100%;
-}
-
-nav {
-    padding: 20px;
-    width: 100%;
-}
-
-nav .back{ background-image: url("/images/backArrow.png"); }
-nav .settings{ background-image: url("/images/settings.png"); }
-nav .user{ background-image: url("/images/user.png"); }
-
-nav .back:hover{ background-image: url("/images/backArrow-selected.png"); }
-nav .settings:hover{ background-image: url("/images/settings-selected.png"); }
-nav .user:hover{ background-image: url("/images/user-selected.png"); }
-
-nav div{
-    width: 48px;
-    height: 48px;
-    background-size: 48px;
-    cursor: pointer;
-}
-.login-form input, .login-form button {
-}
-
-.menu {
-    width: 100%;
-    min-height: 100vh;
-}
-
-.menu ul li {
-    list-style: none;
-    width: 400px;
-    padding: 10px;
-    text-align: center;
-    background-color: #fff;
-    cursor: pointer;
-}
-.menu ul li:hover {
-    background-color: #fee;
-}
-.menu ul a{
-    text-decoration: none;
-}
-.stats {
-    width: 400px;
-    font-family: austin;
-}
-.stats > div{
-    text-align: center;
-}    
-.program > .word {
-    font-size: 56px;
-    font-family: austin;
-}
-.suggestions-list-container{
-    position: relative;
-    width: 400px;
-}
-.suggestions-list{
-    position: absolute;
-    background-color: #fcd;
-    top: 0px;
-    left: 0px;
-    width: 100%;
-    z-index: 1;
-    padding: 1px 1px 0px 1px;
-    max-height: 200px;
-    overflow-y: auto;
-}
-.suggestion{
-    background-color: #fbd;
-    width: 100%;
-    text-align: center;
-    padding: 5px;
-    color: #333;
-    margin-bottom: 1px;
-    cursor: pointer;
-}
-.suggestion.highlighted{
-    background-color: #fff;
-    width: 100%;
-    color: #655;
-}
-.program {
-    border-radius: 15px;
-    background-color: #fbd;
-    min-width: 800px;
-    align-items: center;
-    justify-content: space-between;
-    padding: 30px 40px 40px 40px;
-}
-.program input {
-    font-size: 32px;
-}
-.program button {
-    font-size: 32px;
-    color: #fde;
-    background-color: #a3a;
-}
-.content {
-    height: 400px;
-}
-.content .right {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    height: 100%;
-    padding: 20px;
-}
-.content .right > div:first-child{
-    flex-grow: 1;
-}
-.option {
-    cursor: pointer;
-}
-.option:hover {
-    background-color: #fff;
-}
-.selector {
-    width: 400px;
-    height: 400px;
-    /*overflow-y: scroll;*/
-}
-.selector .option {
-    height: 36px;
-    position: relative;
-    background-color: #fcd;
-    padding: 3px 8px;
-    border-radius: 4px;
-}
-.selector .option:hover {
-    background-color: #fff;
-}
-.selector .option .display {
-    height: 32px;
-    text-overflow: ellipsis;
-    overflow: hidden;
-    white-space: nowrap;
-}
-
-.selector .option .tooltip {
-    background-color: #555;
-    color: #fff;
-    padding: 8px;
-    border-radius: 8px;
-    position: absolute;
-    display: none;
-    top: 40px;
-    width: 280px;
-    z-index: 20;
-}
-.selector .option:hover .tooltip {
-    display: block;
-}
-.previous-word {
-    border-radius: 16px;
-    border: 1px solid #666;
-    line-height: 28px;
     width: 350px;
+    height: 438px;
 }
-.previous-word .state {
-    float: left;
-    color: #333;
-    border-radius: 3px;
-    margin-right: 5px;
-    padding: 3px;
-    line-height: 20px;
+.action .go.button {
+    box-shadow: inset -2px -2px 5px #888;
+    align-items: center;
+    justify-content: center;
 }
-.previous-word .state.wrong { background-color: #f55; }
-.previous-word .state.twotries { background-color: #f59; }
-.previous-word .state.ok { background-color: #0c0; }
-.option.bad {
-    text-decoration-line: line-through;
-    text-decoration-thickness: 2px;
+.action .go.button:active {
+    box-shadow: inset 2px 2px 5px #888;
+}
+.action .go .option {
+    padding: 8px 10px;
+    border: 1px solid #999;
+    box-shadow: 2px 2px 2px #666;
+    cursor: pointer;
+    border-radius: 4px;
+    text-align: center;
+}
+.action .go .option:hover {
+    background-color: #b8b8b8;
+}
+.action .go .option:active {
+    box-shadow: inset 2px 2px #666;
 }

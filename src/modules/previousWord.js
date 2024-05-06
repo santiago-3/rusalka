@@ -15,13 +15,20 @@ const PreviousWord = ({app,word,option,state}) => {
         definition = option
     }
     switch (state) {
-        case states.PANIC    : stateClass = 'wrong';    break
-        case states.CRITICAL : stateClass = 'twotries'; break
-        case states.HAPPINES : stateClass = 'ok'; break
+        case states.PANIC    : stateClass = 'bad';    break
+        case states.CRITICAL : stateClass = 'fine'; break
+        case states.HAPPINES : stateClass = 'good'; break
     }
     return (
-        <div className="previous-word">
-            <div className={['state', stateClass].join(' ')}>{russianWord}</div> {definition.join(' / ')}
+        <div className={['previous', stateClass].join(' ')}>
+            <div>
+                <div className="title">previous word</div>
+                <div className="word">{russianWord}</div>
+            </div>
+            <div>
+                <div className="title">answer</div>
+                <div className="answer">{definition.join(' / ')}</div>
+            </div>
         </div>
     )
 }

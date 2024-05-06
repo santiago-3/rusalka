@@ -6,7 +6,7 @@ let fire = 0
 
 const SuggestionsBox = (props) => {
 
-    const {inputRef,targetUrl,word}              = props
+    const {inputRef,targetUrl,word,children}     = props
     const {setSelected,setSearchWord,searchWord} = props
     const {requestOptions}                       = config
 
@@ -124,25 +124,34 @@ const SuggestionsBox = (props) => {
 
     return(
         <>
-            <input
-                ref={inputRef}
-                type="text"
-                value={searchWord}
-                onChange={handleChange}
-                onKeyDown={handleKeyDown}
-                onBlur={() => {blurEnabled && setHideSuggestions(true)} }
-                onFocus={() => {setHideSuggestions(false)} }
-            />
-            <div className='suggestions-list-container'>
-                <SuggestionsList 
-                    hideSuggestions={hideSuggestions}
-                    list={suggestions}
-                    displayMax={DISPLAY_MAX}
-                    highlighted={highlighted}
-                    pendingRequest={pendingRequest}
-                    headActions={{ setHighlighted, setJustSelected, setBlurEnabled }}
-                    loading={loading}
-                />
+            <div className="action">
+                <div>
+                    <div className="selector">
+                        <input
+                            ref={inputRef}
+                            type="text"
+                            value={searchWord}
+                            onChange={handleChange}
+                            onKeyDown={handleKeyDown}
+                            onBlur={() => {blurEnabled && setHideSuggestions(true)} }
+                            onFocus={() => {setHideSuggestions(false)} }
+                        />
+                    </div>
+                    {children}
+                </div>
+                <div>
+                    <div className="go">
+                        <SuggestionsList 
+                            hideSuggestions={hideSuggestions}
+                            list={suggestions}
+                            displayMax={DISPLAY_MAX}
+                            highlighted={highlighted}
+                            pendingRequest={pendingRequest}
+                            headActions={{ setHighlighted, setJustSelected, setBlurEnabled }}
+                            loading={loading}
+                        />
+                    </div>
+                </div>
             </div>
         </>
     )

@@ -2,7 +2,7 @@ import React from 'react'
 
 const Suggestion = ({pos, id, meaning, highlighted, headActions}) => {
 
-    const classes = [ 'suggestion' ]
+    const classes = [ 'option' ]
     if (pos === highlighted){
         classes.push('highlighted')
     }

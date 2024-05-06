@@ -18,7 +18,7 @@ const Selector = ({app}) => {
     const [mistakes, setMistakes]             = useState(0)
     const [selectedWordId, setSelectedWordId] = useState(0)
     const [optionsDisplay, setOptionsDisplay] = useState(<></>)
-    const [previousWord, setPreviousWord]     = useState('')
+    const [previousWord, setPreviousWord]     = useState(null)
     const [previousOption, setPreviousOption] = useState('')
     const [previousState, setPreviousState]   = useState(null)
 
@@ -125,12 +125,13 @@ const Selector = ({app}) => {
             const definition = typeof option.word == 'object'
                            ? option.word.join(' / ')
                            : option.word
+
             return <div
                         key={option.id}
                         className={['option',option.state].join(' ')}
                         onClick={() => setSelectedWordId(option.id)}
                    >
-                       <div class="display">{definition}</div>
+                       <div className="display">{definition}</div>
                         { definition.length > 46 && <div class="tooltip">{definition}</div> }
                    </div>
                     
@@ -146,44 +147,38 @@ const Selector = ({app}) => {
 
     return (
         <ShowOrLoading loading={loading}>
-            <div className="program">
-                <div className="word">
-                    {   
-                        typeof word.word == 'object'
-                            ? word.word.join(' / ')
-                            : word.word
-                    }
+            <div className="word">
+                {   
+                    typeof word.word == 'object'
+                        ? word.word.join(' / ')
+                        : word.word
+                }
+            </div>
+            <div className="stats flex-between">
+                <div>{ stats.total }<br />learned</div>
+                <div>{ stats.sessionTotal }<br />answered now</div>
+                <div>{ stats.sessionGood }<br />good</div>
+            </div>
+            <div className="action">
+                <div>
+                    <div className="selector">
+                        select an option >
+                    </div>
+                    { /*<Feedback
+                        currentWord={words[currentWordI]?.word}
+                        userWord={userWord}
+                        attempts={attempts}
+                    /> */}
+                    { previousWord !== null && <PreviousWord
+                            word={previousWord.word}
+                            option={previousWord.meaning}
+                            state={previousState}
+                    /> }
                 </div>
-                <div className="content flex-between">
-                    <div className="selector left">
-                        <div className="options vertical-flex">{optionsDisplay}</div>
-                    </div>
-                    <div className="right">
-                        <div className="flex-between vertical-flex">
-                            {previousWord != '' && <PreviousWord
-                                app={app}
-                                word={previousWord}
-                                option={previousOption}
-                                state={previousState}
-                                states={states}
-                            />}
-                            <div>{message}</div>
-                        </div>
-                        <div className="stats flex-between">
-                            <div>
-                                Learned<br/>
-                                { stats.total }
-                            </div>
-                            <div>
-                                Answered now<br/>
-                                { stats.sessionTotal }
-                            </div>
-                            <div>
-                                Good<br/>
-                                { stats.sessionGood }
-                            </div>
-                        </div>
-                    </div>
+            </div>
+            <div>
+                <div class="go">
+                    { /* options */ }
                 </div>
             </div>
         </ShowOrLoading>

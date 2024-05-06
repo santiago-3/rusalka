@@ -157,49 +157,35 @@ const RusToEng = ({setProgram}) => {
     return (
         <ShowOrLog off={!initialLoad} >
             <ShowOrMessage show={!serverError} message={serverErrorMessage}>
-                <div className="program">
+                <div className="content">
                     <div className="word">{word}</div>
-                    <div className="content flex-between">
-                        <div className="vertical-flex">
-                            <SuggestionsBox
-                                inputRef={inputRef}
-                                targetUrl={ `${rusovUrl}/search` }
-                                setSelected={setSelected}
-                                setSearchWord={setSearchWord}
-                                searchWord={searchWord}
-                            />
-                        </div>
-                        <div className="right">
-                            { previousWord !== null && <div className="prevWord">
-                                <PreviousWord
-                                    app={apps.russianToEnglish}
-                                    word={previousWord.word}
-                                    option={previousWord.meaning}
-                                    state={previousState}
-                                />
-                            </div> }
+                    <div className="stats flex-between">
+                        <div>{ stats.total }<br />learned</div>
+                        <div>{ stats.sessionTotal }<br />answered now</div>
+                        <div>{ stats.sessionGood }<br />good</div>
+                    </div>
+                    <SuggestionsBox
+                        inputRef={inputRef}
+                        targetUrl={ `${rusovUrl}/search` }
+                        setSelected={setSelected}
+                        setSearchWord={setSearchWord}
+                        searchWord={searchWord}
+                    >
+                        <>
                             <Feedback
                                 currentDef={currentDef}
                                 currentWordId={currentWordId}
                                 userWordId={chosen}
                                 attempts={attempts}
                             />
-                            <div className="stats flex-between">
-                                <div>
-                                    Learned<br/>
-                                    { stats.total }
-                                </div>
-                                <div>
-                                    Answered now<br/>
-                                    { stats.sessionTotal }
-                                </div>
-                                <div>
-                                    Good<br/>
-                                    { stats.sessionGood }
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                            { previousWord !== null && <PreviousWord
+                                    app={apps.russianToEnglish}
+                                    word={previousWord.word}
+                                    option={previousWord.meaning}
+                                    state={previousState}
+                            /> }
+                        </>
+                    </SuggestionsBox>
                 </div>
             </ShowOrMessage>
         </ShowOrLog>

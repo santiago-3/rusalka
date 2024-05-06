@@ -3,6 +3,7 @@ import ShowOrMessage from './showOrMessage'
 import ShowOrLog from './showOrLog'
 import Feedback from './feedback.js'
 import config from './config.js'
+import PreviousWord from './modules/previousWord.js'
 
 const nextWordsRoute  = '/get_next_words'
 const updateWordRoute = '/update_word_priority'
@@ -164,43 +165,44 @@ const EngToRus = ({setProgram}) => {
     return (
         <ShowOrLog off={!initialLoad}>
             <ShowOrMessage show={!serverError} message={serverErrorMessage}>
-                <div className="program">
+                <div className="content">
                     <div className="word">{ 
                         words.length === 0 
                             ? 'Loading...'
                             : meaning
                     }
                     </div>
-                    <div className="content flex-between">
-                        <div className="flex-center vertical-flex">
-                            <input
-                                ref={inputRef}
-                                type="text"
-                                value={inputWord}
-                                onChange={handleChange}
-                                onKeyUp={handleKeyUp}
-                            />
-                            <button ref={buttonRef} onClick={checkWord} >next</button>
-                        </div>
-                        <div className="right">
+                    <div className="stats">
+                        <div>{ stats.total }<br />learned</div>
+                        <div>{ stats.sessionTotal }<br />answered now</div>
+                        <div>{ stats.sessionGood }<br />good</div>
+                    </div>
+                    <div className="action">
+                        <div>
+                            <div className="selector">
+                                <input
+                                    ref={inputRef}
+                                    type="text"
+                                    value={inputWord}
+                                    onChange={handleChange}
+                                    onKeyUp={handleKeyUp}
+                                />
+                            </div>
                             <Feedback
                                 currentWord={words[currentWordI]?.word}
                                 userWord={userWord}
                                 attempts={attempts}
                             />
-                            <div className="margin-top stats flex-between">
-                                <div>
-                                    Learned<br/>
-                                    { stats.total }
-                                </div>
-                                <div>
-                                    Answered now<br/>
-                                    { stats.sessionTotal }
-                                </div>
-                                <div>
-                                    Good<br/>
-                                    { stats.sessionGood }
-                                </div>
+                            { /* previousWord !== null && <PreviousWord
+                                    app={apps.russianToEnglish}
+                                    word={previousWord.word}
+                                    option={previousWord.meaning}
+                                    state={previousState}
+                            /> */}
+                        </div>
+                        <div>
+                            <div ref={buttonRef} onClick={checkWord} className="go button">
+                                Go
                             </div>
                         </div>
                     </div>
