@@ -14,7 +14,7 @@ const EngToRus = ({setProgram}) => {
     const inputRef  = useRef(null)
     const buttonRef = useRef(null)
     const {rusovUrl,wordsBatch,serverErrorMessage} = config
-    const {requestOptions,apps} = config
+    const {requestOptions,apps, states} = config
 
     const [ serverError, setServerError ]   = useState(false)
     const [ words, setWords ]               = useState([])
@@ -27,6 +27,9 @@ const EngToRus = ({setProgram}) => {
     const [ wordDone, setWordDone ]         = useState(false)
     const [ inputWord, setInputWord ]       = useState('')
     const [ initialLoad, setInitialLoad ]   = useState(true)
+
+    const [ previousWord, setPreviousWord ]   = useState(null)
+    const [ previousState, setPreviousState ] = useState()
 
     const updateStats = () => {
         setStats( previousStats => {
@@ -141,18 +144,28 @@ const EngToRus = ({setProgram}) => {
 
     useEffect(() => {
         if (words.length > 0){
-            setMeaning( words[currentWordI].meaning.map( meaning => <div>{meaning}</div> ) )
+            setMeaning( words[currentWordI].meaning.join(' / ') )
         }
     }, [words, currentWordI])
 
     useEffect(() => {
-        if (attempts === 2 && inputWord !== words[currentWordI].word) {
-            console.log('word incorrect')
-            sendWordResult()
-            // inputRef.current.disabled = true
-        }
-        else if (attempts === 1 && inputWord !== words[currentWordI].word){
-            console.log('try again')
+        if (attempts > 0) {
+            let wrongs = attempts
+            if (inputWord === words[currentWordI].word) {
+                wrongs--
+            }
+            if (attempts === 2 || attempts-1 === wrongs ) {
+                sendWordResult()
+                setPreviousWord(words[currentWordI])
+                setPreviousState(
+                    attempts == 2
+                        ?  wrongs == 1
+                            ? states.CRITICAL
+                            : states.PANIC
+                        : states.HAPPINES
+                )
+                moveToNextWord()
+            }
         }
     }, [attempts])
 
@@ -193,12 +206,12 @@ const EngToRus = ({setProgram}) => {
                                 userWord={userWord}
                                 attempts={attempts}
                             />
-                            { /* previousWord !== null && <PreviousWord
-                                    app={apps.russianToEnglish}
-                                    word={previousWord.word}
-                                    option={previousWord.meaning}
+                            { previousWord !== null && <PreviousWord
+                                    app={apps.englishToRussian}
+                                    word={previousWord.meaning}
+                                    option={previousWord.word}
                                     state={previousState}
-                            /> */}
+                            /> }
                         </div>
                         <div>
                             <div ref={buttonRef} onClick={checkWord} className="go button">
@@ -212,4 +225,3 @@ const EngToRus = ({setProgram}) => {
     )
 }
 export default EngToRus
-

@@ -12,7 +12,6 @@ const updateWordRoute = '/update_word_priority'
 const RusToEng = ({setProgram}) => {
 
     // setProgram("Russian to English")
-
     const inputRef  = useRef(null)
 
     const {rusovUrl,serverErrorMessage} = config
@@ -56,7 +55,6 @@ const RusToEng = ({setProgram}) => {
     }
 
     useEffect( () => {
-        console.log('selected: ', selected)
         const handleClick = () => {
             setChosen(selected)
             setAttempts(previousAttempts => previousAttempts + 1)

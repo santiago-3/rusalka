@@ -167,6 +167,7 @@ input:focus {
     box-shadow: inset 2px 2px 5px #888;
 }
 .action .go .option {
+    position: relative;
     padding: 8px 10px;
     border: 1px solid #999;
     box-shadow: 2px 2px 2px #666;
@@ -179,4 +180,22 @@ input:focus {
 }
 .action .go .option:active {
     box-shadow: inset 2px 2px #666;
+}
+.action .go .option .display {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.option:hover .tooltip {
+    display: block;
+}
+.tooltip {
+    display: none;
+    position: absolute;
+    padding: 8px 10px;
+    top: 0px;
+    left: 105%;
+    width: 200px;
+    border-radius: 4px;
+    background-color: #d0d0d0;
 }

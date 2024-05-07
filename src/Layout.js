@@ -4,18 +4,18 @@ const Layout = () => {
   return (
     <>
       <header>
-          <div class="title">
-              <span class="gray-1">-</span>
-              <span class="gray-2">-</span>
-              <span class="gray-3">-</span>
+          <div className="title">
+              <span className="gray-1">-</span>
+              <span className="gray-2">-</span>
+              <span className="gray-3">-</span>
               Rusalka
-              <span class="gray-3">-</span>
-              <span class="gray-2">-</span>
-              <span class="gray-1">-</span>
+              <span className="gray-3">-</span>
+              <span className="gray-2">-</span>
+              <span className="gray-1">-</span>
           </div>
       </header>
       <main>
-          <div class="column-left">
+          <div className="column-left">
               <ul>
                   <Link to="write-english-to-russian"><li>English to russian</li></Link>
                   <Link to="write-russian-to-english"><li>Russian to english</li></Link>

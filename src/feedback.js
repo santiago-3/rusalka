@@ -4,7 +4,7 @@ const Feedback = ({currentWord,userWord,attempts}) => {
     const attemptSwitch = {
         0 : <span>&nbsp;</span>,
         1 : <span className="try-again">Try again!</span>,
-        2 : <span className="word-reveak">{currentWord}</span>
+        2 : <span className="word-reveal">{currentWord}</span>
     }
     let feedback
     if (currentWord === userWord){
